@@ -1,0 +1,33 @@
+<ui:composition template="/WEB-INF/template.xhtml"
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:ui="http://java.sun.com/jsf/facelets">
+
+    <ui:define name="title">
+        Web Shop - The Three Bears
+    </ui:define>
+
+    <ui:define name="content">
+		<div class="page-header">
+			<h1>Please sign in</h1>
+		</div>
+		<p class="lead"></p>
+		<div class="col-xs-12 col-sm-4 col-md-4">
+
+		</div>
+		<div class="col-xs-12 col-sm-4 col-md-4">
+			<h:form class="form-signin">
+				<h2 class="form-signin-heading"></h2>
+				<h:outputLabel for="inputEmail" value="Username" />
+				<h:inputText type="email" id="inputEmail" class="form-control" placeholder="Email address" required="" autofocus="" value="#{loginRequest.username}" />
+				<h:outputLabel for="inputPassword" value="Password" />
+				<h:inputSecret type="password" id="inputPassword" class="form-control" placeholder="Password" required="" value="#{loginRequest.password}" /><br/>
+				<h:commandButton type="submit" class="btn btn-lg btn-primary btn-block" value="Sign in" action="#{loginRequest.login}" />
+			</h:form>
+		</div>
+		<div class="col-xs-12 col-sm-4 col-md-4">
+
+		</div>
+	</ui:define>
+</ui:composition>

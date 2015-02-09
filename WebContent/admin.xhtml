@@ -1,0 +1,24 @@
+<ui:composition template="/WEB-INF/template.xhtml"
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:ui="http://java.sun.com/jsf/facelets">
+
+    <ui:define name="title">
+        Web Shop - The Three Bears
+    </ui:define>
+
+    <ui:define name="content">
+		<h2>Welcome The Three Bears</h2>
+		<h4>Add New Products - Select a category below</h4>
+		<h:form>
+    		<h:commandLink action="honey" value="Honey"/>
+		</h:form>
+		<h:form>
+    		<h:commandLink action="addWax" value="Wax"/>
+		</h:form>
+		<h:form>
+    		<h:commandLink action="Miscellaneous" value="Miscellaneous"/>
+		</h:form>
+	</ui:define>
+</ui:composition>

@@ -1,0 +1,41 @@
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html">
+    <h:head>
+        <title>Web Shop - The Three Bears</title>
+    </h:head>
+    <h:body>
+       <h3>Edit Your Details</h3>
+		<h:form id="userForm">
+			<h:messages style="color:red"/>
+			<h:panelGrid columns="4" >
+				<h:outputLabel value="First Name:" />
+				<h:outputText value="#{userHolder.currentUser.firstName}" /> 
+				<h:inputText value="#{editUser.firstname}"/>
+				<br /><br />
+				
+				<h:outputLabel value="Last Name:" />
+				<h:outputText value="#{userHolder.currentUser.lastName}"/>
+				<h:inputText value="#{editUser.lastname}"/>
+				<br /><br />
+				
+				<h:outputLabel value="User Name:" />
+				<h:outputText value="#{userHolder.currentUser.username}"/>
+				<h:inputText value="#{editUser.username}"/>
+				<br /><br />
+				
+				<h:outputLabel value="Password:" />
+				<h:outputText value="****************"/>
+				<h:inputText value="#{editUser.password}"/>
+				<br /><br />
+				
+				<h:outputLabel value="Confirm Password:" />
+				<h:outputText value="****************"/>
+				<h:inputText value="#{editUser.password2}"/>
+				<br /><br />
+				
+				<h:commandButton value="Save" action="#{editUser.updateUser()}"/>
+			</h:panelGrid>
+		</h:form>
+    </h:body>
+</html> 

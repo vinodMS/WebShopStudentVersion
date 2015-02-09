@@ -1,0 +1,24 @@
+<ui:composition template="/WEB-INF/template.xhtml"
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:ui="http://java.sun.com/jsf/facelets">
+
+    <ui:define name="title">
+        Web Shop - The Three Bears
+    </ui:define>
+
+    <ui:define name="content">
+		<h1>#{ph.currentProduct.name}</h1>
+		<p>#{ph.currentProduct.description}</p>
+		<h:form>
+			<h:outputLabel>Enter the Amount</h:outputLabel>
+				<h:selectOneMenu value="#{ph.amount}">
+   					<f:selectItems value="#{ph.addStockSelection()}" var="c"
+   					itemLabel="#{c}" itemValue="#{c}" />
+   				</h:selectOneMenu>
+			<h:inputHidden value="#{ph.productId}"/>
+			<h:commandButton action="#{ph.addToCart}" value="Add to cart" />
+		</h:form>
+	</ui:define>
+</ui:composition>

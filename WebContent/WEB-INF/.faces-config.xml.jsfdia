@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PROCESS model-entity="JSFProcess">
+ <PROCESS-ITEM NAME="rules:#catalog.xhtml" PATH="/catalog.xhtml"
+  SHAPE="32,17,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#catalog.xhtml:0" NAME="item"
+   PATH="/catalog.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="detail::#detail.xhtml" NAME="output"
+    PATH="/detail.xhtml" TARGET="rules:#detail.xhtml" TITLE="detail" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+  <PROCESS-ITEM ID="rules:#catalog.xhtml:1" NAME="item1"
+   PATH="/catalog.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="login::#login.xhtml" NAME="output"
+    PATH="/login.xhtml" TARGET="rules:#login.xhtml" TITLE="login" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#detail.xhtml" PATH="/detail.xhtml"
+  SHAPE="240,33,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#detail.xhtml:0" NAME="item"
+   PATH="/detail.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="added::#cart.xhtml" NAME="output"
+    PATH="/cart.xhtml" TARGET="rules:#cart.xhtml" TITLE="added" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#cart.xhtml" PATH="/cart.xhtml"
+  SHAPE="448,17,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#cart.xhtml:0" NAME="item" PATH="/cart.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="confirm::#confirm.xhtml" NAME="output"
+    PATH="/confirm.xhtml" TARGET="rules:#confirm.xhtml" TITLE="confirm" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#login.xhtml" PATH="/login.xhtml"
+  SHAPE="256,177,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#login.xhtml:0" NAME="item"
+   PATH="/login.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="loggedIn::#catalog.xhtml" NAME="output"
+    PATH="/catalog.xhtml" TARGET="rules:#catalog.xhtml" TITLE="loggedIn" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#register.xhtml" PATH="/register.xhtml"
+  SHAPE="48,161,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#register.xhtml:0" NAME="item"
+   PATH="/register.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="registered::#catalog.xhtml" NAME="output"
+    PATH="/catalog.xhtml" TARGET="rules:#catalog.xhtml"
+    TITLE="registered" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#confirm.xhtml" PATH="/confirm.xhtml"
+  SHAPE="688,33,0,0" model-entity="JSFProcessGroup"/>
+</PROCESS>

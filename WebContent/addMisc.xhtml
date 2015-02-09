@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+	<h:head>
+		<title>Web Shop - The Three Bears</title>
+	</h:head>
+	<h:body>
+		<h3>Add New Miscellaneous Product</h3>
+		 
+		<h:form id="form">
+			<h:panelGrid columns="3">
+				<h:outputLabel>Product Name:</h:outputLabel>
+				<h:inputText value="#{addProduct.name}"></h:inputText>
+				<br /><br />
+			 
+				<h:outputLabel>Description:</h:outputLabel>
+				<h:inputText value="#{addProduct.description}"></h:inputText>
+				<br /><br />
+				 
+				<h:outputLabel>Unit Price</h:outputLabel>
+				<h:inputText value="#{addProduct.price}"></h:inputText>
+				<br /><br />
+				
+				<h:outputLabel>Expiry Date</h:outputLabel>
+				<h:inputText value="#{addProduct.expireDate}"></h:inputText>
+				<br /><br />
+				
+				<h:outputLabel>Area of Application</h:outputLabel>
+				<h:inputText value="#{addProduct.areaOfApplication}"></h:inputText>
+				<br /><br />
+				
+				<h:outputLabel>In Stock</h:outputLabel>
+				<h:inputText value="#{addProduct.inStock}"></h:inputText>
+				<br /><br />
+				
+				<h:commandButton value="Save Product" action="#{addProduct.addMisc}"/>
+			</h:panelGrid>
+		</h:form>
+	</h:body>
+</html>
