@@ -11,8 +11,6 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="User")
-
 public class User implements Serializable{
 
 	private static final long serialVersionUID = 1L;
@@ -30,8 +28,10 @@ public class User implements Serializable{
 	@Column(name="username")
 	String username;
 	@Column(name="password")
-	String password;
-	
+	int password;
+	@Column(name = "admin", insertable=false, updatable = false, nullable = false, columnDefinition = "INT(1) default '0'") 
+	int admin;
+
 	public User(String firstName, String lastName, String username) {
 		super();
 		this.id = currentId++; // Simple way of getting an unique id. To be deferred to the DBMS later.
@@ -40,7 +40,7 @@ public class User implements Serializable{
 		this.username = username;
 	}
 
-	public User(String firstName, String lastName, String username, String password) {
+	public User(String firstName, String lastName, String username, int password) {
 		super();
 		this.id = id; // Simple way of getting an unique id. To be deferred to the DBMS later.
 		this.firstName = firstName;
@@ -86,25 +86,33 @@ public class User implements Serializable{
 	}
 	
 
-	public void setPassword(String password) {
+	public void setPassword(int password) {
 		this.password = password;
 	}
 	
-	public String getPassword(){
+	public int getPassword(){
 		return password;
 	}
 	
+	public int getAdmin() {
+		return admin;
+	}
+
+	public void setAdmin(int admin) {
+		this.admin = admin;
+	}
+
 	@Override
 	public String toString() {
 		return "Person " + firstName + " " + lastName + " has username " + username;
 	}
 	
-	public boolean authorize(String username, String password) {
-		if ((this.username.equals(username) && (this.password.equals(password)))) {
-			return true;
-		}
-		else {
-			return false;
-		}
-	}
+//	public boolean authorize(String username, String password) {
+//		if ((this.username.equals(username) && (this.password.equals(password)))) {
+//			return true;
+//		}
+//		else {
+//			return false;
+//		}
+//	}
 }

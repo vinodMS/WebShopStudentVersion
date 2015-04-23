@@ -9,7 +9,20 @@
     </ui:define>
 
     <ui:define name="content">
-       <h3>User Registration Form</h3>
-            User successfully saved.
+		<div class="page-header">
+			<h1>User Registration Form</h1>
+		</div>
+		<div class="alert alert-success" role="alert">User successfully saved!</div>
+		
+		<div class="col-xs-12 col-sm-4 col-md-4">
+			<h:form class="form-signin">
+				<h2 class="form-signin-heading"></h2>
+				<h:outputLabel for="inputEmail" value="Username" />
+				<h:inputText type="email" id="inputEmail" class="form-control" placeholder="Email address" required="" autofocus="" value="#{loginRequest.username}" />
+				<h:outputLabel for="inputPassword" value="Password" />
+				<h:inputSecret type="password" id="inputPassword" class="form-control" placeholder="Password" required="" value="#{loginRequest.password}" /><br/>
+				<h:commandButton type="submit" class="btn btn-lg btn-primary btn-block" value="Sign in" action="#{loginRequest.login}" />
+			</h:form>
+		</div>
 	</ui:define>
 </ui:composition>

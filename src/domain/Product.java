@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
+import javax.persistence.Version;
 
 @Entity
 @Inheritance
@@ -19,16 +20,26 @@ public abstract class Product implements Comparable<Product> {
 	@Column(name="ID", nullable = false)
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
+	
+	@Version
+	@Column(nullable = false)
+	private int version;
+	
 	@Column(name="name")
 	private String name;
+	
 	@Column(name="description")
 	private String description;
+	
 	@Column(name="price")
 	private double price; // in euro, internationalization can come later
+	
 	@Column(name="productType", insertable = false, updatable = false)
 	protected String productType;
+	
 	@Column(name="inStock")
 	private int inStock;
+	
 	
 	public Product(String name, String description, double price, int inStock) {
 		super();
@@ -88,6 +99,14 @@ public abstract class Product implements Comparable<Product> {
 
 	public void setInStock(int inStock) {
 		this.inStock = inStock;
+	}
+
+	public int getVersion() {
+		return version;
+	}
+
+	public void setVersion(int version) {
+		this.version = version;
 	}
 
 	@Override

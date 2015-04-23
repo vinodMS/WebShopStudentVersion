@@ -63,6 +63,7 @@ public class EditUser {
 	}
 
 	public String updateUser(){
+		int passwordHash;
 		if (firstname.isEmpty()){
 			firstname = userHolder.getCurrentUser().firstName;
 		}
@@ -73,8 +74,11 @@ public class EditUser {
 			username = userHolder.getCurrentUser().username;
 		}
 		if (password.isEmpty()){
-			password = userHolder.getCurrentUser().password;
-		} 
+			passwordHash = userHolder.getCurrentUser().password;
+		}
+		else{
+			passwordHash = password.hashCode();
+		}
 		
 		if(password.equals(password2)){
 			Session session = HibernateUtil.getSessionFactory().openSession();
@@ -83,7 +87,7 @@ public class EditUser {
 			query.setParameter("firstName", firstname);
 			query.setParameter("lastName", lastname);
 			query.setParameter("username", username);
-			query.setParameter("password", password);
+			query.setParameter("password", passwordHash);
 			query.setParameter("ID", userHolder.getCurrentUser().id);
 			int result = query.executeUpdate();
 			System.out.println("Rows affected: " + result);

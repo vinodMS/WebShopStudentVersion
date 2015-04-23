@@ -9,16 +9,23 @@
     </ui:define>
 
     <ui:define name="content">
-		<h2>Welcome The Three Bears</h2>
+    	<div class="page-header">
+			<h1>Administrator Page</h1>
+		</div>
+		
 		<h4>Add New Products - Select a category below</h4>
 		<h:form>
-    		<h:commandLink action="honey" value="Honey"/>
+    		<h:commandLink action="addHoney" value="Honey"/>
 		</h:form>
 		<h:form>
     		<h:commandLink action="addWax" value="Wax"/>
 		</h:form>
 		<h:form>
-    		<h:commandLink action="Miscellaneous" value="Miscellaneous"/>
+    		<h:commandLink action="addMiscellaneous" value="Miscellaneous"/>
+		</h:form>
+		<h4>Add New Flower</h4>
+		<h:form>
+    		<h:commandLink action="addFlower" value="Flower"/>
 		</h:form>
 	</ui:define>
 </ui:composition>

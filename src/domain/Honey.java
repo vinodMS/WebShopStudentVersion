@@ -12,26 +12,26 @@ import javax.persistence.ManyToOne;
 @DiscriminatorValue("Honey")
 public class Honey extends Product {
 	
-	@Column(name="expiryDate")
-	private Date expiryDate;
+	@Column(name="expireDate")
+	private Date expireDate;
 	@ManyToOne
     @JoinColumn(name="source")
 	private Flower source;
 	
-	public Honey(String name, String description, Date expiryDate, Flower source, double price, int inStock) {
+	public Honey(String name, String description, Date expireDate, Flower source, double price, int inStock) {
 		super(name, description, price, inStock);
-		this.expiryDate = expiryDate;
+		this.expireDate = expireDate;
 		this.source = source;
 	}
 	
 	public Honey(){}
 
-	public Date getExpiryDate() {
-		return expiryDate;
+	public Date getExpireDate() {
+		return expireDate;
 	}
 
-	public void setExpiryDate(Date expiryDate) {
-		this.expiryDate = expiryDate;
+	public void setExpireDate(Date expireDate) {
+		this.expireDate = expireDate;
 	}
 
 	public Flower getSource() {
@@ -43,6 +43,6 @@ public class Honey extends Product {
 	}
 	@Override
 	public String toString(){
-		return "Honey: " + source.getName() + ", best before " + expiryDate + ", " + getDescription();
+		return "Honey: " + source.getName() + ", best before " + expireDate + ", " + getDescription();
 	}
 }

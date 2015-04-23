@@ -4,21 +4,39 @@
 		xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" 
 		id="WebApp_ID" 
 		version="3.0">
-  <display-name>WebShopStudentVersion</display-name>
-  <welcome-file-list>
-    <welcome-file>catalog.xhtml</welcome-file>
-  </welcome-file-list>
-  <servlet>
-    <servlet-name>facesServlet</servlet-name>
-   	<servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
-    <load-on-startup>1</load-on-startup>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>facesServlet</servlet-name>
-    <url-pattern>/faces/*</url-pattern>
-  </servlet-mapping>
-  <servlet-mapping>
-      <servlet-name>facesServlet</servlet-name>
-      <url-pattern>*.xhtml</url-pattern>
-    </servlet-mapping>
+  		<display-name>WebShopStudentVersion</display-name>
+  		
+	<welcome-file-list>
+		<welcome-file>catalog.xhtml</welcome-file>
+	</welcome-file-list>
+	
+	<!-- Login Filter -->
+	<filter>
+		<filter-name>AuthorizationFilter</filter-name>
+		<filter-class>domain.AuthorizationFilter</filter-class>
+	</filter>
+	
+	<!-- Secure Folder -->
+	<filter-mapping>
+		<filter-name>AuthorizationFilter</filter-name>
+		<url-pattern>/secured/*</url-pattern>
+	</filter-mapping>	
+	
+	<!-- Staring JSF -->
+	<servlet>
+		<servlet-name>facesServlet</servlet-name>
+		<servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>facesServlet</servlet-name>
+		<url-pattern>/faces/*</url-pattern>
+	</servlet-mapping>
+	  
+	  <!--  JSF URL Mapping -->
+	<servlet-mapping>
+		<servlet-name>facesServlet</servlet-name>
+		<url-pattern>*.xhtml</url-pattern>
+	</servlet-mapping>
 </web-app>

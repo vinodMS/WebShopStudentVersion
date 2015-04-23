@@ -7,11 +7,6 @@
    <PROCESS-ITEM-OUTPUT ID="detail::#detail.xhtml" NAME="output"
     PATH="/detail.xhtml" TARGET="rules:#detail.xhtml" TITLE="detail" model-entity="JSFProcessItemOutput"/>
   </PROCESS-ITEM>
-  <PROCESS-ITEM ID="rules:#catalog.xhtml:1" NAME="item1"
-   PATH="/catalog.xhtml" model-entity="JSFProcessItem">
-   <PROCESS-ITEM-OUTPUT ID="login::#login.xhtml" NAME="output"
-    PATH="/login.xhtml" TARGET="rules:#login.xhtml" TITLE="login" model-entity="JSFProcessItemOutput"/>
-  </PROCESS-ITEM>
  </PROCESS-ITEM>
  <PROCESS-ITEM NAME="rules:#detail.xhtml" PATH="/detail.xhtml"
   SHAPE="240,33,0,0" model-entity="JSFProcessGroup">

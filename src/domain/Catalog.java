@@ -1,14 +1,11 @@
 package domain;
 
-import java.util.Iterator;
 import java.util.List;
 
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
-
 import org.hibernate.Query;
 import org.hibernate.Session;
-
 import java.io.Serializable;
 
 

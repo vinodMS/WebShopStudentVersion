@@ -18,6 +18,5 @@ public class UserHolder implements Serializable {
 	public void setCurrentUser(User currentUser) {
 		this.currentUser = currentUser;
 	}
-	
    
 }

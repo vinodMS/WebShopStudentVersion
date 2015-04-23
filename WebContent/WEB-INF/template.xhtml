@@ -10,7 +10,13 @@
         <h:outputStylesheet name="css/bootstrap.min.css" />
         <h:outputStylesheet name="css/bootstrap-theme.min.css" />	
         <h:outputStylesheet name="css/sticky-footer-navbar.css" />	
-
+		<style>
+			.invoice-title h2, .invoice-title h3 {display: inline-block;}
+			.table > tbody > tr > .no-line {border-top: none;}
+			.table > thead > tr > .no-line { border-bottom: none;}
+			.table > tbody > tr > .thick-line {border-top: 2px solid;}
+			
+		</style>
     </h:head>
     <h:body>
 		<!-- Fixed navbar -->
@@ -32,8 +38,37 @@
 					<ul class="nav navbar-nav">
 						<li><a href="catalog.xhtml">Products</a></li>
 						<li><a href="cart.xhtml">Cart</a></li>
-						<li><a href="login.xhtml">Sign in</a></li>
-						<li><a href="register.xhtml">Register</a></li>
+
+						<!-- Show login and register for not logged in -->
+						<h:panelGroup rendered="#{!loginRequest.loggedIn}">
+							<li><a href="login.xhtml">Login</a></li>
+							<li><a href="register.xhtml">Sign up</a></li>
+						</h:panelGroup>
+						
+						<!-- Show Admin controls to logged in users -->
+						<h:panelGroup rendered="#{loginRequest.loggedInAdmin}">
+	 						<li class="dropdown">
+				              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Administrator <span class="caret"></span></a>
+				              <ul class="dropdown-menu" role="menu">	      
+				                <li class="dropdown-header">Add Products</li>
+				                <li><a href="addHoney.xhtml">Honey</a></li>
+				                <li><a href="addWax.xhtml">Wax</a></li>
+				                <li><a href="addMisc.xhtml">Miscellaneous</a></li>
+				                <li class="divider"></li>
+				                <li class="dropdown-header">Add Flowers</li>
+				                <li><a href="addFlower.xhtml">Flower</a></li>
+				              </ul>
+				            </li>
+			            </h:panelGroup>
+			            <h:panelGroup rendered="#{loginRequest.loggedIn}">
+			            <li class="dropdown">
+			              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">#{userHolder.currentUser.firstName} <span class="caret"></span></a>
+			              <ul class="dropdown-menu" role="menu">
+			              	<li><a href="editUser.xhtml">Edit User</a></li>
+			              	<li><h:form style="padding-top: 15px; padding-bottom: 15px;display: block; padding: 3px 20px; clear: both; font-weight: 400; line-height: 1.42857143; color: #333; white-space: nowrap;"><h:commandLink action="#{loginRequest.doLogout()}" value="Logout"/></h:form></li>
+			              </ul>
+			             </li>
+			             </h:panelGroup>
 					</ul>
 				</div><!--/.nav-collapse -->
 			</div>

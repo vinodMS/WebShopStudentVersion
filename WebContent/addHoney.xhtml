@@ -1,34 +1,65 @@
-<?xml version='1.0' encoding='UTF-8' ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
-	  xmlns:f="http://java.sun.com/jsf/core"
-	  xmlns:h="http://java.sun.com/jsf/html">
-	<h:head>
-		<title>Web Shop - The Three Bears</title>
-	</h:head>
-	<h:body>
-		<h3>Add New Wax Product</h3>
-		 
+<ui:composition template="/WEB-INF/template.xhtml"
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:ui="http://java.sun.com/jsf/facelets">
+
+    <ui:define name="title">
+        Web Shop - The Three Bears
+    </ui:define>
+
+    <ui:define name="content">
+    
+		<div class="page-header">
+			<h1>Honey Products</h1>
+		</div>
 		<h:form>
-			<h:panelGrid columns="3" >
-				<h:outputLabel>Wax Name:</h:outputLabel>
-				<h:inputText value="#{addProduct.name}"></h:inputText>
-				<br /><br />
-			 
-				<h:outputLabel>Description:</h:outputLabel>
-				<h:inputText value="#{addProduct.description}"></h:inputText>
-				<br /><br />
-				 
-				<h:outputLabel>Unit Price</h:outputLabel>
-				<h:inputText value="#{addProduct.price}"></h:inputText>
-				<br /><br />
-				
-				<h:outputLabel>In Stock</h:outputLabel>
-				<h:inputText value="#{addProduct.inStock}"></h:inputText>
-				<br /><br />
-				<h:commandButton value="Save Product" action="#{addProduct.addWax}"/>
-			 
-			</h:panelGrid>
+			<div class="container-page">
+				<h:messages class="alert alert-success"/>
+				<div class="col-md-6">
+					<h3 class="dark-grey">Add New:</h3>
+					
+					<div class="form-group col-lg-12">
+						<h:outputLabel value="Honey Name" />
+						<h:inputText type="text" name="" class="form-control" value="#{addProduct.name}" required="true"/>
+					</div>
+					
+					<div class="form-group col-lg-12">
+						<h:outputLabel value="Description" />
+						<h:inputText type="text" name="" class="form-control" value="#{addProduct.description}" required="true"/>
+					</div>				
+					
+					<div class="form-group col-lg-12">
+						<h:outputLabel value="Unit Price (€)" />
+						<h:inputText type="text" name="" class="form-control" value="#{addProduct.price}" required="true"/>
+					</div>
+					
+					<div class="form-group col-lg-12">
+						<h:outputLabel value="Expiry Date" />
+						<h:inputText type="text" name="" id="date" class="form-control" value="#{addProduct.expireDate}" required="true">
+							<f:convertDateTime pattern="d-M-yyyy" />
+ 						 </h:inputText>
+ 						 <p class="help-block">Date Format - d-M-yyyy</p>
+					</div>
+					
+					<div class="form-group col-lg-12">
+						<h:outputLabel value="Flower Source" />
+						<h:selectOneMenu value="#{addProduct.source}" class="form-control">
+   								<f:selectItems value="#{addProduct.flowerList()}" var="f" itemLabel="#{f.name}" itemValue="#{f.id}" />
+   						</h:selectOneMenu>
+   						(Missing a flower from the list? Return to the previous page to add a new flower)
+					</div>
+					
+					<div class="form-group col-lg-12">
+						<h:outputLabel value="In Stock" />
+						<h:inputText  type="text" name="" class="form-control"  value="#{addProduct.inStock}" required="true"/>
+					</div>
+					
+					<div class="form-group col-lg-12">
+						<h:commandButton type="submit" class="btn btn-primary" value="Save Product" action="#{addProduct.addHoney}"/>
+					</div>
+				</div>	
+			</div>		
 		</h:form>
-	</h:body>
-</html>
+	</ui:define>
+</ui:composition>

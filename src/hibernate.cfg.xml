@@ -23,5 +23,6 @@
   <mapping class="domain.Miscellaneous"/>
   <mapping class="domain.Honey"/>
   <mapping class="domain.Flower"/>
+  <mapping class="domain.ShoppingCart"/>
  </session-factory>
 </hibernate-configuration>

@@ -10,17 +10,37 @@ import java.util.Set;
 
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
+import javax.persistence.Column;
+import javax.persistence.ElementCollection;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import java.io.Serializable;
 
 @Named
 @SessionScoped
+@Entity
 public class ShoppingCart implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private static long currentId =1;
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name="ID")
 	private long id;
+	@Column(name="date")
 	private Date date;
+	@ManyToOne
+    @JoinColumn(name="user")
 	private User user;
-	private Map<Product, Integer> orders = new HashMap<Product, Integer>();;
+
+	@ElementCollection
+	private Map<Product, Integer> orders = new HashMap<Product, Integer>();
+	
+	@Column(name="status")
 	private OrderStatus status;
 	
 	public ShoppingCart() {
@@ -91,14 +111,14 @@ public class ShoppingCart implements Serializable {
 		return id;
 	}
 	
-	public void addToCart(Product product) {
+	public void addToCart(Product product, int amountSelected) {
 		if (orders.containsKey(product)) {
 			int amount = orders.get(product);
-			amount ++;
+			amount +=amountSelected;
 			orders.put(product, amount);
 		}
 		else {
-			orders.put(product, 1);
+			orders.put(product, amountSelected);
 		}
 	}
 	

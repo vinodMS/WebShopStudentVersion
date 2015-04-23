@@ -12,11 +12,98 @@
 		<div class="page-header">
 			<h1>Shopping Cart</h1>
 		</div>
-		<ui:repeat value="#{cart.productIds}" var="pid">
-    		<h:outputText value="#{pid} "/>
-    	</ui:repeat>
-    	<h:form>
- 			<h:commandButton type="submit" class="btn btn-primary" value="Confirm" action="confirm"/>
-		</h:form>
+		
+		<!-- Todo -->
+<!-- 		<h:panelGroup rendered="#{!ph.filledCart}">
+			<div class="col-md-10">
+				<div class="alert alert-warning" role="alert">Your shopping cart is empty</div>
+			</div>
+		</h:panelGroup> -->
+		
+		<div class="col-md-10">
+			<h3 class="dark-grey">Order Overview</h3>
+			<dl class="dl-horizontal">
+			
+				<dt>No. of Products in Cart: </dt>
+				<dd>#{shoppingCart.orders.size()}</dd>
+				
+				<dt>Date Added: </dt>
+				<dd>
+			 		<h:form>
+           				<h:outputText value="#{shoppingCart.date}">
+               				<f:convertDateTime dateStyle="long" type="date"/>
+            			</h:outputText>
+        			</h:form>
+			  	</dd>
+			</dl>
+			
+			<div class="col-md-6">
+				<h:dataTable class="table table-hover" value="#{ph.productNames()}" var="p">
+					<h:column>
+   						<f:facet name="header">
+   							<h:outputText value="Product Name"/>
+   						</f:facet>
+       					<h:outputText value="#{p.name}"/>
+   					</h:column>
+   					<h:column>
+   						<f:facet name="header">
+   							<h:outputText value="Price (€)"/>
+   						</f:facet>
+       					<h:outputText value="#{p.price}"/>
+   					</h:column>
+				</h:dataTable>	
+			</div>
+			
+			<div class="col-md-2">
+				<h:dataTable class="table table-hover" value="#{ph.productQuantity()}" var="c">
+				    <h:column>
+   						<f:facet name="header">
+   							<h:outputText value="Quantity"/>
+   						</f:facet>
+       					<h:outputText value="#{c}"/>
+   					</h:column>
+   				</h:dataTable>
+  				</div>
+  				
+  			<div class="col-md-2">
+				<h:dataTable class="table table-hover" value="#{ph.productTotal()}" var="t">
+				    <h:column>
+   						<f:facet name="header">
+   							<h:outputText value="Cost (€)"/>
+   						</f:facet>
+       					<h:outputText value="#{t}"/>
+   					</h:column>
+   				</h:dataTable>
+  			</div>
+  			
+  			<div class="col-md-2">
+				<h:dataTable class="table table-hover" value="#{ph.productNames()}" var="r">
+				    <h:column>
+   						<f:facet name="header">
+   							<h:outputText value="Remove"/>
+   						</f:facet>
+   							<h:form>
+       							<h:commandButton type="submit" class="btn btn-danger btn-xs" value="X" action="#{shoppingCart.removeFromCart(r)}"/>
+       						</h:form>
+   					</h:column>
+   				</h:dataTable>
+  			</div>
+  			
+  			<div class="col-md-12">
+				<table class="table table-hover" >
+					<tr>
+						<td style="text-align: right; padding-right: 233px;"><B>Subtotal</B>  : #{ph.subTotal()} </td>
+					</tr>
+				</table>
+  			</div>	
+  				
+			<div class="pull-right">
+				<h:form>
+ 					<h:commandButton type="submit" class="btn btn-primary" value="Proceed to Check out" action="confirm"/>
+				</h:form>
+			</div>
+		</div>
+
+
 	</ui:define>
 </ui:composition>

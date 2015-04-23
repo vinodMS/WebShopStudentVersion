@@ -1,41 +1,89 @@
-<html lang="en"
-      xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://java.sun.com/jsf/html">
-    <h:head>
-        <title>Web Shop - The Three Bears</title>
-    </h:head>
-    <h:body>
-       <h3>Edit Your Details</h3>
+<ui:composition template="/WEB-INF/template.xhtml"
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:ui="http://java.sun.com/jsf/facelets">
+
+    <ui:define name="title">
+        Web Shop - The Three Bears
+    </ui:define>
+
+    <ui:define name="content">
+    
+		<div class="page-header">
+			<h1>Edit Your Details</h1>
+		</div>
 		<h:form id="userForm">
-			<h:messages style="color:red"/>
-			<h:panelGrid columns="4" >
-				<h:outputLabel value="First Name:" />
-				<h:outputText value="#{userHolder.currentUser.firstName}" /> 
-				<h:inputText value="#{editUser.firstname}"/>
-				<br /><br />
-				
-				<h:outputLabel value="Last Name:" />
-				<h:outputText value="#{userHolder.currentUser.lastName}"/>
-				<h:inputText value="#{editUser.lastname}"/>
-				<br /><br />
-				
-				<h:outputLabel value="User Name:" />
-				<h:outputText value="#{userHolder.currentUser.username}"/>
-				<h:inputText value="#{editUser.username}"/>
-				<br /><br />
-				
-				<h:outputLabel value="Password:" />
-				<h:outputText value="****************"/>
-				<h:inputText value="#{editUser.password}"/>
-				<br /><br />
-				
-				<h:outputLabel value="Confirm Password:" />
-				<h:outputText value="****************"/>
-				<h:inputText value="#{editUser.password2}"/>
-				<br /><br />
-				
-				<h:commandButton value="Save" action="#{editUser.updateUser()}"/>
-			</h:panelGrid>
+			<div class="container-page">
+				<h:messages class="alert alert-danger"/>
+				<div class="col-md-6">
+					
+					<div class="form-group col-lg-4 bg-primary">
+						<h:outputLabel value="Details" />
+					</div>
+					<div class="form-group col-lg-4 bg-primary">
+						<h:outputLabel value="Current details" />
+					</div>
+					<div class="form-group col-lg-4 bg-primary">
+						<h:outputLabel value="Update"/>
+					</div>					
+					
+					<div class="form-group col-lg-4">
+						<h:outputLabel value="First Name:" />
+					</div>
+					<div class="form-group col-lg-4">
+						<h:outputText value="#{userHolder.currentUser.firstName}" />
+					</div>
+					<div class="form-group col-lg-4">
+						<h:inputText value="#{editUser.firstname}"/>
+					</div>
+					
+					<div class="form-group col-lg-4">
+						<h:outputLabel value="Last Name:" />
+					</div>
+					<div class="form-group col-lg-4">
+						<h:outputText value="#{userHolder.currentUser.lastName}"/>
+					</div>
+					<div class="form-group col-lg-4">
+						<h:inputText value="#{editUser.lastname}"/>
+					</div>				
+					
+					<div class="form-group col-lg-4">
+						<h:outputLabel value="User Name:" />
+					</div>
+					<div class="form-group col-lg-4">
+						<h:outputText value="#{userHolder.currentUser.username}"/>
+					</div>
+					<div class="form-group col-lg-4">
+						<h:inputText value="#{editUser.username}"/>
+					</div>
+					
+					<div class="form-group col-lg-4">
+						<h:outputLabel value="Password:" />
+					</div>
+					<div class="form-group col-lg-4">
+						<h:outputText value="****************"/>
+					</div>
+					<div class="form-group col-lg-4">
+						<h:inputText value="#{editUser.password}"/>
+					</div>	
+					
+					<div class="form-group col-lg-4">
+						<h:outputLabel value="Confirm Password:" />
+					</div>
+					<div class="form-group col-lg-4">
+						<h:outputText value="****************"/>
+					</div>
+					<div class="form-group col-lg-4">
+						<h:inputText value="#{editUser.password2}"/>
+					</div>
+					
+					<div class="form-group col-lg-12">
+						<h:commandButton type="submit" class="btn btn-primary" value="Save" action="#{editUser.updateUser()}"/>
+					</div>					
+	
+				</div>	
+			</div>		
 		</h:form>
-    </h:body>
-</html> 
+	</ui:define>
+</ui:composition>

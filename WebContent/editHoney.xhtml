@@ -1,0 +1,65 @@
+<ui:composition template="/WEB-INF/template.xhtml"
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:ui="http://java.sun.com/jsf/facelets">
+
+    <ui:define name="title">
+        Web Shop - The Three Bears
+    </ui:define>
+
+    <ui:define name="content">
+    
+		<div class="page-header">
+			<h1>Honey Products</h1>
+		</div>
+		<h:form>
+			<div class="container-page">
+				<h:messages class="alert alert-success"/>
+				<div class="col-md-6">
+					<h3 class="dark-grey">Edit:</h3>
+					
+					<div class="form-group col-lg-12">
+						<h:outputLabel value="Honey Name" />
+						<h:inputText type="text" name="" class="form-control" value="#{ph.currentProduct.name}" required="true"/>
+					</div>
+					
+					<div class="form-group col-lg-12">
+						<h:outputLabel value="Description" />
+						<h:inputText type="text" name="" class="form-control" value="#{ph.currentProduct.description}" required="true"/>
+					</div>				
+					
+					<div class="form-group col-lg-12">
+						<h:outputLabel value="Unit Price (€)" />
+						<h:inputText type="text" name="" class="form-control" value="#{ph.currentProduct.price}" required="true"/>
+					</div>
+					
+					<div class="form-group col-lg-12">
+						<h:outputLabel value="Expiry Date" />
+						<h:inputText type="text" name="" id="date" class="form-control" value="#{ph.currentProduct.expireDate}" required="true">
+							<f:convertDateTime pattern="d-M-yyyy" />
+ 						 </h:inputText>
+ 						 <p class="help-block">Date Format - d-M-yyyy</p>
+					</div>
+					
+					<div class="form-group col-lg-12">
+						<h:outputLabel value="Flower Source" />
+						<h:selectOneMenu value="#{editProduct.source}" class="form-control" selected="#{ph.currentProduct.source}">
+   								<f:selectItems value="#{editProduct.flowerList()}" var="f" itemLabel="#{f.name}" itemValue="#{f.id}" />
+   						</h:selectOneMenu>
+   						(Missing a flower from the list? Return to the previous page to add a new flower)
+					</div>
+					
+					<div class="form-group col-lg-12">
+						<h:outputLabel value="In Stock" />
+						<h:inputText  type="text" name="" class="form-control"  value="#{ph.currentProduct.inStock}" required="true"/>
+					</div>
+					
+					<div class="form-group col-lg-12">
+						<h:commandButton type="submit" class="btn btn-primary" value="Save Product" action="#{editProduct.updateHoney}"/>
+					</div>
+				</div>	
+			</div>		
+		</h:form>
+	</ui:define>
+</ui:composition>

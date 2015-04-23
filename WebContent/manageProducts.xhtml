@@ -1,0 +1,52 @@
+<ui:composition template="/WEB-INF/template.xhtml"
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:ui="http://java.sun.com/jsf/facelets">
+
+    <ui:define name="title">
+        Web Shop - The Three Bears
+    </ui:define>
+
+    <ui:define name="content">
+		<div class="page-header">
+			<h1>Manage Products</h1>
+		</div>
+		<div class="col-md-8">
+			<div class="form-group col-lg-12">
+				<h:dataTable class="table table-striped table-hover" value="#{catalog.product}" var="p">
+		    		<h:column>
+		        		<h:inputHidden value="#{p.id}"/>
+		    		</h:column>
+		    		<h:column>
+		    			<f:facet name="header">
+		    				<h:outputText value="Product"/>
+		    			</f:facet>
+		        		<h:form>
+		                	<h:outputText value="#{p.name}"/>
+		        		</h:form>
+		    		</h:column>
+		    		
+		    		<h:column>
+    					<f:facet name="header">
+    						<h:outputText value="Edit"/>
+    					</f:facet>
+        				<h:form>
+       						<h:commandButton type="submit" class="btn btn-primary btn-xs" value="+" action="#{editProduct.editProducts(p)}"/>
+       					</h:form>
+    				</h:column>
+		    		
+		    		<h:column>
+    					<f:facet name="header">
+    						<h:outputText value="Delete"/>
+    					</f:facet>
+        				<h:form>
+       						<h:commandButton type="submit" class="btn btn-danger btn-xs" value="X" action="#{shoppingCart.removeFromCart(r)}"/>
+       					</h:form>
+    				</h:column>
+
+				</h:dataTable>
+			</div>
+		</div>
+	</ui:define>
+</ui:composition>

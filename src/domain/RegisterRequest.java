@@ -42,10 +42,10 @@ public class RegisterRequest {
 		UserDAO userDao = new UserDAO();
 //		Integer userId= userDao.getId();
 		System.out.println(firstname);
-		User user = new User(firstname, lastname, username,password);
+		User user = new User(firstname, lastname, username,password.hashCode());
 		userDao.save(user);
 		System.out.println("User successfully saved.");
-		return "output";
+		return "registerSuccess";
 	}
     
     

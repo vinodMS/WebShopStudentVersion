@@ -6,10 +6,12 @@ import javax.faces.context.FacesContext;
 //import javax.inject.Inject;
 import javax.inject.Named;
 
+import org.hibernate.Query;
 import org.hibernate.Session;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 
 @Named
@@ -22,9 +24,9 @@ public class addProduct implements Serializable {
 	private int inStock;
 	private Date expireDate;
 	private String areaOfApplication;
-	Session session = HibernateUtil.getSessionFactory().openSession();
-//    @Inject
-//    private UserHolder productHolder;
+	private int source;
+	private List<Flower> flowers;
+
     
 	public String getName() {
 		return name;
@@ -74,6 +76,30 @@ public class addProduct implements Serializable {
 		this.areaOfApplication = areaOfApplication;
 	}
 	
+	public int getSource() {
+		return source;
+	}
+
+	public void setSource(int source) {
+		this.source = source;
+	}
+	
+	public List<Flower> getFlowers() {
+		return flowers;
+	}
+
+	public void setFlowers(List<Flower> flowers) {
+		this.flowers = flowers;
+	}
+
+	public List<Flower> flowerList(){
+		Session session = HibernateUtil.getSessionFactory().openSession();
+		session.getTransaction().begin();
+		Query query = session.createQuery("FROM Flower flower");
+		List<Flower> results = query.list();
+		return results;
+	}
+
 	public void addWax(){
 		ProductDAO productDao = new ProductDAO();
 		Product product = new Wax(name, description, price, inStock);
@@ -82,19 +108,50 @@ public class addProduct implements Serializable {
 		
 		FacesContext context = FacesContext.getCurrentInstance();
     	context.addMessage(null, new FacesMessage(
-    			FacesMessage.SEVERITY_ERROR, "Wax product succesfully added", null));
+    			FacesMessage.SEVERITY_ERROR, "Wax product- " + product.getName() +"succesfully added", null));
 	}
 	
 	 public void addMisc(){
 		ProductDAO productDao = new ProductDAO();
 		Product product = new Miscellaneous(name, description, expireDate, areaOfApplication, price, inStock);
 		productDao.save(product);
-		System.out.println("Wax product succesfully added");
+		System.out.println("Miscellaneous product succesfully added");
 		
 		FacesContext context = FacesContext.getCurrentInstance();
     	context.addMessage(null, new FacesMessage(
-    			FacesMessage.SEVERITY_ERROR, "Wax product succesfully added", null));
+    			FacesMessage.SEVERITY_ERROR, "Miscellaneous product- " + product.getName() +" succesfully added", null));
 	}
-    
+	 
+	 public void addHoney(){
+		 Session session = HibernateUtil.getSessionFactory().openSession();
+		 session.getTransaction().begin();
+		 Query query = session.createQuery("FROM Flower WHERE ID ='" + source +"' " );
+		 List<Flower> results = query.list();
+		 Flower temp = null;
+		 for(Flower inStock : results) {
+		        temp = inStock;
+		    }
+//		 System.out.println("im printing" + temp);
+		ProductDAO productDao = new ProductDAO();
+		Product product = new Honey(name, description, expireDate, temp, price, inStock);
+		productDao.save(product);
+		System.out.println("Honey product succesfully added");
+		
+		FacesContext context = FacesContext.getCurrentInstance();
+    	context.addMessage(null, new FacesMessage(
+    			FacesMessage.SEVERITY_ERROR, "Honey product - " + product.getName() +" succesfully added", null));
+	}
+	 
+	 public void addFlower(){
+		Session session = HibernateUtil.getSessionFactory().openSession();
+		session.beginTransaction();
+		Flower flower = new Flower(name, description);
+		session.save(flower);
+		session.getTransaction().commit();
+		session.close();
+		FacesContext context = FacesContext.getCurrentInstance();
+    	context.addMessage(null, new FacesMessage(
+    			FacesMessage.SEVERITY_ERROR, "Flower succesfully added", null));
+	}
     
 }

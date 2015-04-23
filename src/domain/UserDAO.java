@@ -47,7 +47,7 @@ public class UserDAO {
 		return null;	
 	}
 
-	public User authenticate(String username,String password){
+	public User authenticate(String username,int password){
 		String hql = "FROM User user WHERE user.username = '" + username+ "' AND user.password = '" + password+ "'";
     	Query query = session.createQuery(hql);
     	List<User> list = query.list();
